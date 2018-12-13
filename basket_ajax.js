@@ -13,8 +13,8 @@ $('.my_button').click(function() {
     },
     success: function(data) {
       console.log("success");
+      //---1---dopo aver generato gli n giocatori, per n volte li appendo nella sidebar
       //handlebars-----
-      //dopo aver generato gli n giocatori, per n volte li appendo nella sidebar
       for (var i = 0; i < valore ; i++) {
       var template_base = $('#my-template').html();
       var template = Handlebars.compile(template_base);
@@ -30,7 +30,7 @@ $('.my_button').click(function() {
       $('.sidebar').append(html)
     }
       //-------------
-      //al clicl sui codici nella lista, faccio saltare fuori i valori del giocatore sulla destra.
+      //---2---al click sui codici nella lista, faccio saltare fuori i valori del giocatore sulla destra.
 
       $('.entry h1').click(function(event) {
         var code = $(this).text()
@@ -47,11 +47,12 @@ $('.my_button').click(function() {
             var template_base = $('#my-template-2').html();
             var template = Handlebars.compile(template_base);
 
-            var html_2 = template(mioGioc);
-            //mioGioc sono i valori delle statistiche (ovvero le proprieta dell oggetto), proprio
+            var html_2 = template(mioGioc);//mioGioc e' un oggetto proprio come 'context' nell altro handlebars qua sopra
+
+            //mioGioc sono i valori delle statistiche (ovvero le proprieta dell oggetto, cioe points, fouls...ecc), proprio
             //per quel particlare giocatore (ovvero quel particolare data.response[i]), che ha proprio
             //il codice che ho cliccato nella sidebar.
-            //li vado a richiamare nell html dandogli il nome della singola proprieta( in questo caso
+            //li vado a richiamare nell html dandogli proprio l esatto nome della singola proprieta( in questo caso appunto
             //points, fouls...ecc)
             console.log(html_2);
 
